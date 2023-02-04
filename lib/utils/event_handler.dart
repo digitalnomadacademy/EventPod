@@ -23,13 +23,13 @@ class _BaseEventHandler {
     return providerContainer.read(provider);
   }
 
-  T readEvent<T extends AsyncEventBus1>(Provider<T> provider) {
+  T readEvent<T extends EventBus>(Provider<T> provider) {
     return providerContainer.read(provider);
   }
 }
 
-abstract class AsyncEventHandler1<T> extends _BaseEventHandler {
-  AsyncEventHandler1(ProviderContainer container) : super(container);
+abstract class EventHandler<T> extends _BaseEventHandler {
+  EventHandler(ProviderContainer container) : super(container);
 
   Future<void> execute(T payload);
 }

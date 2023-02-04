@@ -1,36 +1,33 @@
 import 'package:riverflow/utils/logger.dart';
 
-typedef EventListener1<T> = void Function(T payload);
-typedef EventListener0 = void Function();
-typedef AsyncEventListener1<T> = Future<void> Function(T payload);
-typedef AsyncEventListener0 = Future<void> Function();
+typedef EventListener<T> = Future<void> Function(T payload);
 
 abstract class BaseSubscription {
   void removeListener();
 }
 
-class AsyncEventSubscription1<T> extends BaseSubscription {
-  AsyncEventSubscription1(this.Event, this.listener);
+class EventSubscription<T> extends BaseSubscription {
+  EventSubscription(this.event, this.listener);
 
-  final AsyncEventBus1<T> Event;
-  final AsyncEventListener1<T> listener;
+  final EventBus<T> event;
+  final EventListener<T> listener;
 
   @override
   void removeListener() {
-    Event.removeListener(listener);
+    event.removeListener(listener);
   }
 }
 
-abstract class AsyncEventBus1<T> {
-  final List<AsyncEventListener1<T>> listeners = [];
+abstract class EventBus<T> {
+  final List<EventListener<T>> listeners = [];
 
-  AsyncEventSubscription1<T> listen(AsyncEventListener1<T> listener) {
+  EventSubscription<T> listen(EventListener<T> listener) {
     listeners.add(listener);
 
-    return AsyncEventSubscription1<T>(this, listener);
+    return EventSubscription<T>(this, listener);
   }
 
-  void removeListener(EventListener1<T> listener) {
+  void removeListener(EventListener<T> listener) {
     listeners.remove(listener);
   }
 

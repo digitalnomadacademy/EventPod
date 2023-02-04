@@ -14,17 +14,17 @@ class EventHandlerMap extends BaseActor {
   EventHandlerMap(ProviderContainer providerContainer)
       : super(providerContainer);
 
-  void mapAsync1<C extends AsyncEventHandler1<T>, T>(
-      Provider<AsyncEventBus1<T>> EventProvider,
-      C Function(ProviderContainer providerContainer) EventHandlerFactory) {
-    var Event = providerContainer.read(EventProvider);
+  void mapAsync1<C extends EventHandler<T>, T>(
+      Provider<EventBus<T>> eventProvider,
+      C Function(ProviderContainer providerContainer) eventHandlerFactory) {
+    var event = providerContainer.read(eventProvider);
 
-    var subscription = Event.listen(
-        (payload) => EventHandlerFactory(providerContainer).execute(payload));
+    var subscription = event.listen(
+        (payload) => eventHandlerFactory(providerContainer).execute(payload));
     mappings.add(EventEventHandlerMapping(
         subscription: subscription,
-        EventType: Event.runtimeType,
-        EventHandlerType: C));
+        eventType: event.runtimeType,
+        eventHandlerType: C));
   }
 
   @override
@@ -39,11 +39,11 @@ class EventHandlerMap extends BaseActor {
 
 class EventEventHandlerMapping {
   final BaseSubscription subscription;
-  final Type EventType;
-  final Type EventHandlerType;
+  final Type eventType;
+  final Type eventHandlerType;
 
   EventEventHandlerMapping(
       {required this.subscription,
-      required this.EventType,
-      required this.EventHandlerType});
+      required this.eventType,
+      required this.eventHandlerType});
 }
