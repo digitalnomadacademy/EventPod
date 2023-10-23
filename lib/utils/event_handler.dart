@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverflow/utils/service.dart';
-import 'package:riverflow/utils/event.dart';
-import 'package:riverflow/utils/store.dart';
+import 'package:eventpod/utils/service.dart';
+import 'package:eventpod/utils/event.dart';
+import 'package:eventpod/utils/store.dart';
 
 /// Event handler will handle events dispatched to it, it can also call
 /// other event handlers

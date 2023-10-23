@@ -1,4 +1,4 @@
-import 'package:riverflow/utils/logger.dart';
+import 'package:eventpod/utils/logger.dart';
 
 typedef EventListener<T> = Future<void> Function(T payload);
 

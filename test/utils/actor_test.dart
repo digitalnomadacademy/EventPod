@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverflow/utils/actor.dart';
+import 'package:eventpod/utils/actor.dart';
 
 void main() {
   test('readObservable reads correctObservable', () {
