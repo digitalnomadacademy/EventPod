@@ -62,7 +62,7 @@ class _TestActor extends BaseActor {
 
 var _testObservableProvider = StateProvider((red) => _TestObservable(0));
 
-var _testRegularProvider = Provider((ref) => _TestObservable(0));
+// var _testRegularProvider = Provider((ref) => _TestObservable(0));
 
 class _TestObservable {
   final int counter;

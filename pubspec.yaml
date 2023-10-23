@@ -1,7 +1,7 @@
 name: eventpod
 description: The best a dev can get
 version: 0.0.6
-homepage:
+homepage: www.dnadeveloper.com
 
 environment:
   sdk: '>=3.1.4 <4.0.0'

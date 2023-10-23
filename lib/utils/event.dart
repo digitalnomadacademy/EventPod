@@ -37,7 +37,7 @@ abstract class EventBus<T> {
 
   Future<void> dispatch(T payload, {bool eagerError = false}) async {
     try {
-      logger.v('executing ${listeners.length} listeners on $runtimeType'
+      logger.t('executing ${listeners.length} listeners on $runtimeType'
           ' with payload \n $payload');
       await Future.wait(listeners.map((listener) => listener(payload)));
     } catch (e) {
